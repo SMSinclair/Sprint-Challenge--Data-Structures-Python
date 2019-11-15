@@ -43,5 +43,34 @@ class LinkedList:
     return False
 
   def reverse_list(self):
-    # TO BE COMPLETED
-    pass
+    cur = self.head
+    try:
+      new = cur.next_node
+    except(AttributeError):
+      return self
+    cur.next = None
+
+    while(new):
+      prev = cur
+      cur = new
+      new = cur.next_node
+      cur.next_node = prev
+    self.head = cur
+
+    return self
+
+
+# ll = LinkedList()
+# ll.add_to_head(1)
+# ll.add_to_head(2)
+# ll.add_to_head(3)
+# ll.add_to_head(4)
+# ll.add_to_head(5)
+
+# print(f"Head is {ll.head.value} should be 5.")
+
+# ll.reverse_list()
+
+# print(f"Reversed head is {ll.head.value} should be 1.")
+# print(f"Second is {ll.head.get_next().value} should be 2.")
+# print(f"Third is {ll.head.get_next().get_next().value} should be 3.")
